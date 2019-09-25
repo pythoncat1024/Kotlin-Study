@@ -1,5 +1,7 @@
 package org.victor.cat.java.by;
 
+import kotlin.jvm.functions.Function2;
+
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
@@ -25,5 +27,20 @@ public class Main {
         System.out.println(cc);
 
         cc.setCaseLevel(9);
+
+        compute(2, 3, new Function2<Integer, Integer, Integer>() {
+            @Override
+            public Integer invoke(Integer x, Integer y) {
+                return x + y;
+            }
+        });
+        compute(2, 3, (x, y) -> x * y);
+
+        // compute(2, 3) { a, b -> a + b } // kt 实现
+    }
+
+
+    public static int compute(int a, int b, Function2<Integer, Integer, Integer> func) {
+        return func.invoke(a, b);
     }
 }
