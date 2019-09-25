@@ -1,4 +1,4 @@
-package cat.java;
+package org.vactor.cat.java;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeSupport;

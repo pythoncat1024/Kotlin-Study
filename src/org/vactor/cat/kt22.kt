@@ -1,4 +1,4 @@
-package cat
+package org.vactor.cat
 
 import kotlin.reflect.KProperty
 

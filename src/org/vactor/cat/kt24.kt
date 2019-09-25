@@ -1,4 +1,4 @@
-package cat
+package org.vactor.cat
 
 import java.beans.PropertyChangeEvent
 import java.beans.PropertyChangeListener
@@ -7,7 +7,7 @@ import java.beans.PropertyChangeSupport
 
 open class PropertyChangeAware {
 
-    protected val changeSupport: PropertyChangeSupport = PropertyChangeSupport(this)
+    protected val changeSupport: PropertyChangeSupport by lazy { PropertyChangeSupport(this) }
 
     open fun addPropertyChangeListener(listener: PropertyChangeListener) {
         changeSupport.addPropertyChangeListener(listener)
