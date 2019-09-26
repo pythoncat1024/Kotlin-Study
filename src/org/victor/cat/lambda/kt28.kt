@@ -7,7 +7,7 @@ fun main() {
     println("hello world!".filter())
 }
 
-fun String.filter(process: ((Char) -> Boolean)? = null): String {
+fun String.filter(process: ((Char) -> Boolean)? = { c -> c in 'a'..'z' }): String {
 
     val stringBuilder = StringBuilder()
     for (index in 0 until length) {
