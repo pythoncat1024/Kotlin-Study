@@ -4,7 +4,6 @@ package org.victor.cat.java.html.hard;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.function.Function;
 
 class Tag {
 
@@ -16,17 +15,16 @@ class Tag {
         this.name = name;
     }
 
-    <T extends Tag> Void doInit(T child, Function<T, Void> init) {
-        init.apply(child);
+    <T extends Tag> void doInit(T child, Action<T> init) {
+        init.invoke(child);
         children.add(child);
-        return null;
     }
 
     private String childrenStr() {
         return children.toString()
                 .replace("[", "")
                 .replace("]", "")
-                .replace(",", "")
+                .replace(", ", "")
                 ;
     }
 
