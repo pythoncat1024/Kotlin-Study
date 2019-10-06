@@ -4,12 +4,12 @@ package org.victor.cat.dsl
 fun main() {
 
     val div = DIV()
-    div.ol { it ->
-        it.li {
-            it.plus("hello")
+    div.ol { obj: OL ->
+        obj.li { e: LI ->
+            e.plus("hello")
         }
-        it.li {
-            it.plus("world")
+        obj.li { e: LI ->
+            e.plus("world")
         }
     }
     println(div)
@@ -18,7 +18,7 @@ fun main() {
 abstract class DOM(val name: String) {
     var value: String = ""
         protected set
-    private val children = mutableListOf<DOM>()
+    protected val children = mutableListOf<DOM>()
 
     override fun toString(): String {
         return "<$name>$value${children.joinToString("")}</$name>"
@@ -27,32 +27,21 @@ abstract class DOM(val name: String) {
 
 class LI : DOM("li") {
 
-
     operator fun plus(str: String) {
         this.value += str
     }
 
-    override fun toString(): String {
-        return "<$name>$value</$name>"
-    }
 }
 
 class OL : DOM("ol") {
-    private val children = mutableListOf<DOM>()
     fun li(init: (LI) -> Unit) {
         val li = LI()
         init(li)
         children.add(li)
     }
-
-    override fun toString(): String {
-        return "<$name>${children.joinToString("")}</$name>"
-    }
-
 }
 
 class DIV : DOM("html") {
-    private val children = mutableListOf<DOM>()
 
     fun ol(init: (OL) -> Unit) {
         val ol = OL()
@@ -60,7 +49,4 @@ class DIV : DOM("html") {
         init(ol)
     }
 
-    override fun toString(): String {
-        return "<$name>${children.joinToString("")}</$name>"
-    }
 }
