@@ -13,7 +13,7 @@ class HtmlClient {
     private static TABLE createTable() {
         TABLE table = new TABLE();
         table.tr(tr -> tr.td(td -> {
-            System.err.println("be invoked in lambda...");
+            // System.err.println("be invoked in lambda...");
         }));
         return table;
     }
@@ -26,7 +26,7 @@ class HtmlClient {
                 tr.td(new Wrapper<TD>() {
                     @Override
                     public void invoke(TD td) {
-                        System.err.println("be invoked.");
+                        // System.err.println("be invoked.");
                     }
                 });
             }
