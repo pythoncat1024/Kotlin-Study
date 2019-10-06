@@ -37,7 +37,7 @@ fun buildString(builderAction: StringBuffer.() -> StringBuffer): String {
 }
 
 fun buildStr3(builderAction: StringBuffer.() -> Unit): String =
-    StringBuffer().apply { builderAction() }.toString()
+    StringBuffer().apply(builderAction).toString()
 
 
 /**
