@@ -4,3 +4,4 @@ out/
 .gradle/
 gradle/wrapper/*.jar
 *.iml
+target/

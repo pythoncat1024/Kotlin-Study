@@ -7,7 +7,7 @@ fun main() {
         append("Hello ")
         append("world !")
     }
-    println("str = $str")
+    println("value = $str")
 
     val str1 = buildStr {
         it.append("hello ").append("kotlin .")
