@@ -8,10 +8,11 @@ class TABLE {
 
     private List<TR> children = new ArrayList<>();
 
-    void tr(Wrapper<TR> wrapper) {
+    TABLE tr(Wrapper<TR> wrapper) {
         TR tr = new TR();
         wrapper.invoke(tr);
         children.add(tr);
+        return this;
     }
 
     @Override

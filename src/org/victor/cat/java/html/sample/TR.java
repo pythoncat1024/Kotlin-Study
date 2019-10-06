@@ -9,10 +9,11 @@ class TR {
 
     private List<TD> children = new ArrayList<>();
 
-    void td(Wrapper<TD> wrapper) {
+    TR td(Wrapper<TD> wrapper) {
         TD td = new TD();
         wrapper.invoke(td);
         children.add(td);
+        return this;
     }
 
     @Override

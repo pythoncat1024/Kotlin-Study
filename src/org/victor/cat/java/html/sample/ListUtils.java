@@ -11,6 +11,6 @@ class ListUtils {
         return list.toString()
                 .replace("[", "")
                 .replace("]", "")
-                .replace(",", "");
+                .replace(", ", "");
     }
 }
