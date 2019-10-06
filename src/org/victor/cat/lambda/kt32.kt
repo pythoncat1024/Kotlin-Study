@@ -16,6 +16,13 @@ fun main() {
     println("str1 = $str1")
 
     println("buildStr1 = ${buildStr1 { it.append("hello ").append("duck @") }}")
+
+    val action: StringBuffer.() -> StringBuffer = { append("!") }
+    // 定义与使用 lambda 类型的变量
+    println("action -- ${StringBuffer("hi").action()}")
+
+    println("buildStr3 = ${buildStr3 { append("hello ").append("country #") }}")
+
 }
 
 /**
@@ -28,6 +35,10 @@ fun buildString(builderAction: StringBuffer.() -> StringBuffer): String {
     val sb = StringBuffer()
     return sb.builderAction().toString()
 }
+
+fun buildStr3(builderAction: StringBuffer.() -> Unit): String =
+    StringBuffer().apply { builderAction() }.toString()
+
 
 /**
  * 普通 lambda
