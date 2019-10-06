@@ -14,12 +14,17 @@ fun createTable() = table {
     }
 }
 
+fun err(message: String = "") {
+    System.err.println(message)
+}
+
 open class Tag(private val name: String) {
     private val children = mutableListOf<Tag>()
 
     protected fun <T : Tag> doInit(child: T, init: T.() -> Unit) {
         child.init()
         children.add(child)
+        err("class: ${javaClass.simpleName}, size:${children.size}, children:${children.joinToString()}")
     }
 
     override fun toString() = "<$name>${children.joinToString(separator = "")}</$name>"
