@@ -1,0 +1,10 @@
+.idea
+*.iml
+target
+*~
+*.versionsBackup
+**/karma/node_modules
+**/karma/node
+**/karma/etc
+
+js/src/test/karma/package-lock.json
