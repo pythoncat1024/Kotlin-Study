@@ -4,18 +4,30 @@ package org.victor.cat.dsl
 fun main() {
 
     println(createDiv())
+
+    println(createAnotherDiv())
 }
 
 private fun createDiv() = DIV()
     .ol {
-        li { content("java") }
-        li { content("kotlin") }
+        li { +("java") }
+        li { +("kotlin") }
     }
     .ol {
-        li { content("apple") }
-        li { content("banana") }
-        li { content("orange") }
+        li { +("apple") }
+        li { +("banana") }
+        li { +("orange") }
     }
+
+private fun div(init: DIV.() -> Unit) = DIV().apply(init)
+private fun createAnotherDiv() = div {
+    for (i in 1..3) {
+        ol {
+            li { +"index of $i" }
+        }
+    }
+}
+
 
 abstract class DOM(val name: String) {
     var text: String = ""
@@ -29,8 +41,8 @@ abstract class DOM(val name: String) {
 
 class LI : DOM("li") {
 
-    fun content(str: String) {
-        this.text += str
+    operator fun String.unaryPlus() {
+        text = this
     }
 
 }
