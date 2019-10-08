@@ -6,5 +6,5 @@ target
 **/karma/node_modules
 **/karma/node
 **/karma/etc
-
+out
 js/src/test/karma/package-lock.json
